@@ -12,6 +12,9 @@ class Genre(models.Model):
         Model for Category mapping
     """
     category = models.CharField(max_length=255, default=None, blank=True, null= True)
+    
+    def __unicode__(self):
+        return self.category
 
 
 class Movies(models.Model):

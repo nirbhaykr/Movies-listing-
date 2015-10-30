@@ -4,8 +4,8 @@ from Movies.views import MovieChangeViewSet
 from rest_framework.routers import DefaultRouter
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 router = DefaultRouter()
 router.register(r'movies', MovieChangeViewSet)
@@ -20,11 +20,10 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 #     url(r'^$', HomePageView.as_view(),name="about_page"),
     url(r'^api-token-auth/', views.obtain_auth_token),
-#     url(r'^$', MovieListViewSet.as_view(), name="movie_lisitng"),
-#     url(r'^set_lang/(?P<lang_code>\w+)/$', SetLangView.as_view(),name="set_lang"),
+    url(r'^api-auth/',include('rest_framework.urls', namespace='rest_framework')),
 )
 
 urlpatterns = urlpatterns + router.urls
