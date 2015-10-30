@@ -8,7 +8,7 @@ from rest_framework.routers import DefaultRouter
 # admin.autodiscover()
 
 router = DefaultRouter()
-router.register(r'users', MovieChangeViewSet)
+router.register(r'movies', MovieChangeViewSet)
 
 
 urlpatterns = patterns('',
