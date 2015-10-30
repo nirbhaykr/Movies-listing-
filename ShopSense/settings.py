@@ -2,6 +2,8 @@
 
 from os.path import normpath, dirname, join, abspath
 
+# Parse database configuration from $DATABASE_URL
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -23,6 +25,15 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 
 # Additional locations of static files
 STATICFILES_DIRS = (
