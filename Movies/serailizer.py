@@ -22,7 +22,6 @@ class MovieSerializer(serializers.ModelSerializer):
     genre = serializers.SlugRelatedField(many=True, queryset = Genre.objects.all(), read_only=False, slug_field='category')
 
     def create(self, validated_data):
-        import ipdb;ipdb.set_trace()
         if validated_data.get('genre'):
             cateogry_list = validated_data.pop('genre')
         mov_obj = Movies.objects.create(**validated_data)
